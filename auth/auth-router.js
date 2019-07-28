@@ -1,8 +1,9 @@
+const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const generateToken = require('../auth/config/genToken');
+const generateToken = require('./config/genToken');
 //
 
-const db = require('./users-model');
+const db = require('../users/users-model');
 
 //
 
@@ -68,8 +69,8 @@ router.post('/login', (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-    if(req.session) {
-      req.session.destroy(err => {
+    if(token) {
+      token.destroy(err => {
         if(err) {
           res.send('you can checkout anytime')
         }else {
@@ -80,3 +81,5 @@ router.get('/logout', (req, res) => {
       res.end();
     }
 });
+
+module.exports = router;
