@@ -68,18 +68,4 @@ router.post('/login', (req, res) => {
         })
 });
 
-router.get('/logout', (req, res) => {
-    if(token) {
-      token.destroy(err => {
-        if(err) {
-          res.send('you can checkout anytime')
-        }else {
-          res.send('bye, thanks');
-        }
-      })
-    }else {
-      res.end();
-    }
-});
-
 module.exports = router;
