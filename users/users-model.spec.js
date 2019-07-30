@@ -27,7 +27,7 @@ describe('add()', () => {
         expect(users).toHaveLength(1) 
     });
 
-    it('should provide username of chris', async () => {
+    it('should provide username of testUsername', async () => {
         const users = await Users.add({ username: 'testUsername', password: 'password' });
 
         expect(users.username).toBe('testUsername');
@@ -40,7 +40,7 @@ describe('add()', () => {
     it('should insert user into db', async () => {
       await Users.add({ username: 'testUsername', password: 'password' });
       await request(server)
-        .post('/api/login')
+        .post('/api/auth/login')
         .send({ username: 'testUsername', password: 'password' })
         .expect(401)
        })
