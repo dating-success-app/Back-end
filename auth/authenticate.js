@@ -3,6 +3,7 @@ const jwtKey = require('./config/secrets');
 
 function authenticate(req, res, next) {
     const token = req.get('Authorization');
+    // console.log(req, '-- request')
 
     if(token) {
         jwt.verify(token, jwtKey, (err, decoded) => {
